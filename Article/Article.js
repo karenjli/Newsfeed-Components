@@ -99,8 +99,30 @@ const data = [
     <span class='expandButton'></span>
   </div>
 
-  Hint: You will need to use createElement more than once here!
+  Hint: You will need to use createElement more than once here! */
+  
+  const articles = document.querySelector('.articles');
 
+  data.forEach (data => {
+    articles.appendChild(addContent(data.title, data.content))
+  });
+
+  function addContent(title, content) {
+    //new elements  
+    const article = document.createElement('div');
+    const articleHeading = document.createElement('h2');
+    const articleDate = document.createElement('p');
+    const passageDiv = document.createElement('div');
+    const passage1 = document.createElement ('p');
+    const passage2 = document.createElement ('p');
+    const passage3 = document.createElement ('p');
+    const spanButton = document.createElement ('span');
+
+    //Setup structure of elements
+
+
+  }
+  /*
   Your function should take either an object as it's one argument, or 5 separate arguments mapping to each peice of the data object above.
 
   Step 2: Add an event listener to the expandButton span. This event listener should toggle the class 'article-open' on the 'article' div.
