@@ -129,7 +129,7 @@ const data = [
       const article = document.createElement('div');
       const articleHeading = document.createElement('h2');
       const articleDate = document.createElement('p');
-      const passageDiv = document.createElement('div');
+     // const passageDiv = document.createElement('div');
       const passage1 = document.createElement ('p');
       const passage2 = document.createElement ('p');
       const passage3 = document.createElement ('p');
@@ -138,10 +138,10 @@ const data = [
       //Setup structure of elements
       article.appendChild(articleHeading);
       article.appendChild(articleDate);
-      article.appendChild(passageDiv);
-      passageDiv.appendChild(passage1);
-      passageDiv.appendChild(passage2);
-      passageDiv.appendChild(passage3);
+      //article.appendChild(passageDiv);
+      article.appendChild(passage1);
+      article.appendChild(passage2);
+      article.appendChild(passage3);
       article.appendChild(spanButton);
 
 
@@ -151,8 +151,11 @@ const data = [
       })
 
       //set class name
-      article.classList.add('title');
-      passageDiv.classList.add('paragraph');
+      //articleHeader.classList.add('title');
+      //passageDiv.classList.add('paragraph');
+      article.classList.add('article');
+      articleDate.classList.add('date');
+      spanButton.classList.add('expandButton');
 
       //set content
       articleHeading.textContent = post.title;
