@@ -15,13 +15,47 @@ let menuItems = [
 
   <div class="menu">
     <ul>
-      {each menu item as a list item}
+      <li>
     </ul>
   </div>
 
-  Pass the function an array as it's only argument.
+  Pass the function an array as it's only argument.*/
+  window.addEventListener('load', (e)=>{ 
+    //querySelector
+    const header = document.querySelector (".header");
+    const menuBar = document.querySelector (".menu-button");
 
-  Step 2: Iterate over the array creating a list item <li> element for each item in the array. 
+    //eventListener
+    menuBar.addEventListener ('click', (e) =>{
+      const btn = document.querySelector ('.menu');
+      btn.classList.toggle("menu--open");
+    })
+
+    function Menu (arr) {
+      //set new elements
+      const menuDiv = document.createElement('div');
+      const list = document.createElement('ul');
+
+      //add class
+      menuDiv.classList.add('menu');
+
+
+      //add to div
+      menuDiv.appendChild (list);
+
+      //list items
+      arr.forEach (item => {
+        const listItem = document.createElement('li');
+        listItem.textContent = item;
+        list.appendChild(listItem);
+  
+      })
+      return menuDiv;
+    }
+    header.appendChild(Menu(menuItems));
+  });
+
+  /*Step 2: Iterate over the array creating a list item <li> element for each item in the array. 
   Add those items to the <ul>
 
   Step 3: Using a DOM selector, select the menu button currently on the DOM.
