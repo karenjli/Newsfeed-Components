@@ -85,6 +85,22 @@ const data = [
     thirdParagraph: `Hodor hodor - hodor... Hodor hodor hodor hodor. Hodor. Hodor! Hodor hodor, hodor hodor hodor hodor hodor; hodor hodor? Hodor!
           Hodor hodor, HODOR hodor, hodor hodor?! Hodor! Hodor hodor, HODOR hodor, hodor hodor, hodor, hodor hodor. Hodor, hodor.
           Hodor. Hodor, hodor, hodor. Hodor hodor... Hodor hodor hodor?! Hodor, hodor... Hodor hodor HODOR hodor, hodor hodor. Hodor.`
+  },
+  {
+    title: 'Build Week Special',
+    date: 'Jan 29st, 2019',
+    firstParagraph: `Hodor hodor HODOR! Hodor hodor - hodor, hodor. Hodor hodor... Hodor hodor hodor; hodor hodor. Hodor hodor hodor, hodor, hodor
+          hodor. Hodor, hodor. Hodor. Hodor, hodor - hodor... Hodor hodor hodor; hodor HODOR hodor, hodor hodor?! Hodor hodor, hodor.
+          Hodor hodor hodor hodor hodor! Hodor hodor - HODOR hodor, hodor hodor hodor hodor hodor; hodor hodor? `,
+
+    secondParagraph: `Hodor, hodor. Hodor. Hodor, hodor, hodor. Hodor hodor, hodor. Hodor hodor, hodor, hodor hodor. Hodor! Hodor hodor, hodor;
+          hodor hodor hodor? Hodor, hodor. Hodor. Hodor, hodor - HODOR hodor, hodor hodor hodor! Hodor, hodor. Hodor. Hodor, HODOR
+          hodor, hodor hodor, hodor, hodor hodor. Hodor hodor - hodor - hodor... Hodor hodor hodor hodor hodor hodor hodor?! Hodor
+          hodor - hodor hodor hodor. Hodor. Hodor hodor... Hodor hodor hodor hodor hodor? `,
+
+    thirdParagraph: `Hodor hodor - hodor... Hodor hodor hodor hodor. Hodor. Hodor! Hodor hodor, hodor hodor hodor hodor hodor; hodor hodor? Hodor!
+          Hodor hodor, HODOR hodor, hodor hodor?! Hodor! Hodor hodor, HODOR hodor, hodor hodor, hodor, hodor hodor. Hodor, hodor.
+          Hodor. Hodor, hodor, hodor. Hodor hodor... Hodor hodor hodor?! Hodor, hodor... Hodor hodor HODOR hodor, hodor hodor. Hodor.`
   }
 ];
 
@@ -99,8 +115,66 @@ const data = [
     <span class='expandButton'></span>
   </div>
 
-  Hint: You will need to use createElement more than once here!
+  Hint: You will need to use createElement more than once here! */
+  window.addEventListener('load', (e)=>{ 
 
+    const articles = document.querySelector(".articles");
+   
+    data.forEach(info => {
+      articles.appendChild(addContent(info));
+    });
+
+    function addContent(post) {
+      //new elements  
+      const article = document.createElement('div');
+      const articleHeading = document.createElement('h2');
+      const articleDate = document.createElement('p');
+     // const passageDiv = document.createElement('div');
+      const passage1 = document.createElement ('p');
+      const passage2 = document.createElement ('p');
+      const passage3 = document.createElement ('p');
+      const spanButton = document.createElement('span');
+
+      //Setup structure of elements
+      article.appendChild(articleHeading);
+      article.appendChild(articleDate);
+      //article.appendChild(passageDiv);
+      article.appendChild(passage1);
+      article.appendChild(passage2);
+      article.appendChild(passage3);
+      article.appendChild(spanButton);
+
+
+      //add eventlistner
+      spanButton.addEventListener('click', (e)=> {
+        article.classList.toggle('article-open');
+      })
+
+      //set class name
+      //articleHeader.classList.add('title');
+      //passageDiv.classList.add('paragraph');
+      article.classList.add('article');
+      articleDate.classList.add('date');
+      spanButton.classList.add('expandButton');
+
+      //set content
+      articleHeading.textContent = post.title;
+      articleDate.textContent = post.date;
+      passage1.textContent = post.firstParagraph;
+      passage2.textContent = post.secondParagraph;
+      passage3.textContent = post.thirdParagraph;
+      spanButton.textContent = "Open";
+    
+
+    return article;
+    }
+    // data.forEach(info => {
+    //   articles.appendChild(addContent(info));
+   // });
+  }
+  );
+
+  /*
   Your function should take either an object as it's one argument, or 5 separate arguments mapping to each peice of the data object above.
 
   Step 2: Add an event listener to the expandButton span. This event listener should toggle the class 'article-open' on the 'article' div.
